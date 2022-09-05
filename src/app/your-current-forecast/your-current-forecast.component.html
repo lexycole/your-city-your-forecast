@@ -1,16 +1,30 @@
-<div>
-    <p>your current forecast works!</p>
-    <div>
-            <div>
-                <span>{{current.city}}, {{current.country}}</span>
-                <span>{{current.date | date:'fullDate'}}</span>
-            </div>
-            <div>
-                <img [src]='current.image'>
-                <span>{{current.temperature | number:'1.0-0'}}˚F</span>
-            </div>
-            <div>
-                {{current.description}}
-            </div>
-       </div>
+<div *ngIf="!current">
+    no data
+</div>
+<div *ngIf="current">
+    <div fxLayout="row">
+        <div fxFlex="66%" class="mat-title no-margin">
+            {{current.city}}, {{current.country}}
+        </div>
+        <div fxFlex class="right mat-h3 no-margin">
+            {{current.date | date:'EEEE'}}<br>
+            {{current.date | date:'MMM d'}}{{getOrdinal(current.date)}}
+        </div>
+    </div>
+    <div fxLayout="row" fxLayoutAlign="center center">
+        <div fxFlex="55%">
+            <img style="zoom: 175%" [src]='current.image'>
+        </div>
+        <div fxFlex class="right mat-display-3 no-margin">
+            <p class="mat-display-3">
+                {{current.temperature | number:'1.0-0'}}
+                <span class="mat-display-1 unit">˚F</span>
+                </p>
+        </div>
+    </div>
+    <div fxLayoutAlign="center">
+        <div class="mat-caption">
+            {{current.description}}
+        </div>
+    </div>
 </div>
