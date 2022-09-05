@@ -1,7 +1,4 @@
-<div *ngIf="!current">
-    no data
-</div>
-<div *ngIf="current">
+<div *ngIf="current$ | async as current">
     <div fxLayout="row">
         <div fxFlex="66%" class="mat-title no-margin">
             {{current.city}}, {{current.country}}
@@ -11,15 +8,16 @@
             {{current.date | date:'MMM d'}}{{getOrdinal(current.date)}}
         </div>
     </div>
-    <div fxLayout="row" fxLayoutAlign="center center">
+    <div fxLayout="row" fxLayoutAlign="center center" style="margin-bottom: -48px;">
         <div fxFlex="55%">
-            <img style="zoom: 175%" [src]='current.image'>
+          <img style="zoom: 175%; margin-bottom: 32px;" [src]="current.image"
+            [alt]="current.description" />
         </div>
-        <div fxFlex class="right mat-display-3 no-margin">
+        <div fxFlex class="right no-margin">
             <p class="mat-display-3">
                 {{current.temperature | number:'1.0-0'}}
-                <span class="mat-display-1 unit">˚F</span>
-                </p>
+                <span class="mat-display-1 unit">&#8457;</span>
+            </p>
         </div>
     </div>
     <div fxLayoutAlign="center">

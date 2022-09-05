@@ -39,9 +39,13 @@
       <h1>
         LocalCast Weather
       </h1>
-      
+        <div fxLayoutAlign="center">
+          <!-- <app-your-city-search (searchEvent)="doSearch($event)"></app-your-city-search> -->
+          <app-your-city-search></app-your-city-search>
+        </div>
         <div class="mat-caption vertical-margin">Your city, your forecast, right now!</div>
-            <app-your-current-forecast></app-your-current-forecast>
+          <!-- <app-your-current-forecast [current]="currentWeather"></app-your-current-forecast> -->
+          <app-your-current-forecast></app-your-current-forecast>
         <div>current weather</div>
 
      </div>
